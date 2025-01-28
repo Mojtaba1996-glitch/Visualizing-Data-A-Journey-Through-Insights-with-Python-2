@@ -218,3 +218,71 @@ fig.write_image("figures/returns_analysis.png")
 # Display the chart
 fig.show()turns_scatter.py
 ```
+
+## 📊 Portfolio Weights Over Time
+
+**When to use**: This visualization helps in analyzing the distribution of portfolio weights across different assets over time. It is useful for understanding how the allocation of assets changes and for comparing different investment strategies.
+
+**Examples**:
+- **Finance**: Track the allocation of assets in a portfolio.
+- **Engineering**: Monitor resource allocation in projects.
+- **Healthcare**: Observe the distribution of resources across different departments.
+![Portfolio Weights Over Time](figures/portfolio_weights.png)
+
+```python
+# code/portfolio_weights.py
+import matplotlib.pyplot as plt
+import seaborn as sns
+import pandas as pd
+
+# Function to plot weights over time in the style of the image
+def plot_stacked_bar(weights_df, strategy):
+    plt.figure(figsize=(12, 8))
+
+    # Access the DataFrame for the current strategy using weights_df[strategy]
+    df = weights_df[strategy]
+
+    # Normalize weights to 100% for better comparison (sum of weights for each row = 100)
+    weights_normalized = df.div(df.sum(axis=1), axis=0) * 100
+
+    # Use a predefined color palette, similar to the example image
+    colors = sns.color_palette('Paired', n_colors=len(df.columns))  #Paired
+
+    # Plot as stacked bar chart
+    ax = plt.gca()
+    bar_width = 1 # Adjust width of bars
+    x = range(len(weights_normalized))
+
+    # Stack bars manually to achieve overlap effect
+    bottom = [0] * len(weights_normalized)
+    for i, col in enumerate(weights_normalized.columns):
+        ax.bar(x, weights_normalized[col], width=bar_width, color=colors[i], edgecolor='black', linewidth=1.2, bottom=bottom, label=col)
+        bottom += weights_normalized[col]
+
+    # Add labels and titles
+    plt.title(f'{strategy}', fontsize=16)
+    #plt.xlabel('Date', fontsize=16)
+    plt.ylabel('Portfolio weight (%)', fontsize=18)
+    plt.xticks(fontsize=18)  # Adjust as needed
+    plt.yticks(fontsize=18)  # Adjust as needed
+
+    # Format x-axis dates
+    tick_frequency = 4 # added tick_frequency
+    ax.set_xticks(range(0, len(df), tick_frequency))
+    ax.set_xticklabels(df.index.strftime('%Y-%m-%d')[::tick_frequency], rotation=85)
+
+    # Adjust legend
+    plt.legend(loc='upper left', bbox_to_anchor=(.99,.99), title='', fontsize=18)
+
+    # Clean layout and display
+    plt.tight_layout()
+    plt.savefig("figures/portfolio_weights.png")
+    plt.show()
+
+# Example data (replace with your actual data)
+# weights_df = pd.DataFrame(...)
+# strategies = ['Strategy1', 'Strategy2']  # Replace with your actual strategies
+
+# Plot the stacked bar chart for each strategy
+for strategy in strategies:
+    plot_stacked_bar(weights_df, strategy)
