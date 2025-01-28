@@ -227,7 +227,7 @@ fig.show()turns_scatter.py
 - **Finance**: Track the allocation of assets in a portfolio.
 - **Engineering**: Monitor resource allocation in projects.
 - **Healthcare**: Observe the distribution of resources across different departments.
-![Portfolio Weights Over Time](figures/portfolio_weights.png)
+![Portfolio Weights Over Time](figures/weights.png)
 
 ```python
 # code/portfolio_weights.py
