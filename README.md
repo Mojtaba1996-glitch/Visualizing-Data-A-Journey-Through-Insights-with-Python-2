@@ -5,8 +5,8 @@
 Download the PDF here: [Visualizing Data Guide](docs/docs/docs/Visualizing.pdf)
 
 ## 🗂️ Code Examples
-### 1. Normalized Stock Prices
-![Line chart comparion](figures/normalized_prices.png)
+### 1.Normalized Stock Prices for Comparison
+![Line chart comparion](figures/newplot.png)
 ```python
 # import pandas pd
 import plotly.graph_objects as go
