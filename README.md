@@ -158,7 +158,7 @@ plt.show()own_plots.py
 - **Finance**: Track the performance of different stocks or funds.
 - **Engineering**: Monitor the efficiency of different systems.
 - **Healthcare**: Observe changes in patient metrics.
-![Returns Analysis](figures/newplot (1).png)
+![Returns Analysis](figures/returns.png)
 ```python
 # See code/re# code/returns_analysis.py
 import plotly.graph_objects as go
