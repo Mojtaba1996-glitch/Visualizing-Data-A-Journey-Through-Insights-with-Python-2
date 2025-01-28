@@ -64,7 +64,8 @@ print(sorted_prices)
 ```
 
 ## 🗂️ Multi-Strategy Comparison Bar Chart
-![Portfolio Weights](figures/download (1).png)
+![Resource Allocation](figures/download (1).png)
+
 **When to use**: Compare how different strategies distribute resources (budget, time, personnel) across categories.  
 
 **Examples**:
