@@ -113,14 +113,15 @@ plt.show().py
 ```
 
 ## 🗂️ Max Drawdown Analysis
-![Resource Allocation](figures/download.png)
 
 **When to use**: When to use: Analyze the maximum drawdown, which is the peak-to-trough decline during a specific recorded period of an investment, fund, or commodity. It is usually quoted as the percentage between the peak and the trough.
 
 **Examples**:
 - **Finance**: Assess the risk of investment portfolios. 
 - **Engineering**: Evaluate the performance of systems under stress.
-- **Healthcare**: Monitor patient health metrics over time. 
+- **Healthcare**: Monitor patient health metrics over time.
+![Resource Allocation](figures/download.png)
+
 ```python
 # See code/drawdimport matplotlib.pyplot as plt
 import pandas as pd
