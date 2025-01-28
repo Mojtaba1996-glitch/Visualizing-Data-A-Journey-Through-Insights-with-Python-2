@@ -150,8 +150,71 @@ plt.savefig("figures/max_drawdown.png")
 plt.show()own_plots.py
 ```
 
-### 4. Returns Scatter Plot
-![Returns Analysis](figures/returns_analysis.png)
+## 📊 Returns Analysis
+
+**When to use**: This visualization helps in analyzing the percentage returns of various entities over time. It is useful for identifying trends and comparing performance across different entities.
+
+**Examples**:
+- **Finance**: Track the performance of different stocks or funds.
+- **Engineering**: Monitor the efficiency of different systems.
+- **Healthcare**: Observe changes in patient metrics.
+![Returns Analysis](figures/newplot (1).png)
 ```python
-# See code/returns_scatter.py
+# See code/re# code/returns_analysis.py
+import plotly.graph_objects as go
+import pandas as pd
+
+# Example data (replace with your actual data)
+# Returns = pd.DataFrame(...)
+
+# Create a Plotly figure
+fig = go.Figure()
+
+# Add scatter plots for each column in Returns
+for col in Returns.columns:
+    fig.add_trace(go.Scatter(x=Returns.index, y=Returns[col] * 100, name=col, mode='markers'))
+
+# Define horizontal lines at +5%, +10%, +20%, and their negative counterparts
+horizontal_lines = [10, 20, -10, -20]  # Y-values for the horizontal lines
+
+for y in horizontal_lines:
+    fig.add_shape(
+        type="line",
+        x0=Returns.index.min(),  # Start of the line (minimum x-axis value)
+        x1=Returns.index.max(),  # End of the line (maximum x-axis value)
+        y0=y,  # Y-coordinate for start of the line
+        y1=y,  # Y-coordinate for end of the line (same as start for horizontal line)
+        line=dict(
+            color="black",  # Line color
+            width=2,       # Line width
+            dash="solid"    # Line style (e.g., "solid", "dot", "dash")
+        )
+    )
+
+# Update layout for axis titles, legend, and size
+fig.update_layout(
+    title='Returns Analysis',  # Title of the plot
+    xaxis=dict(
+        title='Time',
+        title_font=dict(size=20),
+        tickfont=dict(size=20)
+    ),
+    yaxis=dict(
+        title='Return %',
+        title_font=dict(size=20),
+        tickfont=dict(size=20)
+    ),
+    legend=dict(
+        font=dict(size=20)
+    ),
+    showlegend=True,
+    width=900,  # Set the width of the plot
+    height=600  # Set the height of the plot
+)
+
+# Save the chart
+fig.write_image("figures/returns_analysis.png")
+
+# Display the chart
+fig.show()turns_scatter.py
 ```
