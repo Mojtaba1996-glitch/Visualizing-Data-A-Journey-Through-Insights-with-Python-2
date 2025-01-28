@@ -63,10 +63,52 @@ print(sorted_prices)
 
 ```
 
-### 2. Portfolio Optimization
-![Portfolio Weights](figures/portfolio_optimization.png)
+## 🗂️ Multi-Strategy Comparison Bar Chart
+![Portfolio Weights](figures/download (1).png)
+**When to use**: Compare how different strategies distribute resources (budget, time, personnel) across categories.  
+
+**Examples**:
+- **Business**: Compare marketing budget allocation across channels (social media, ads, events).  
+- **Healthcare**: Visualize hospital staff distribution across departments.  
+- **Education**: Analyze funding allocation for school programs.  
 ```python
-# See code/portfolio_bar.py
+# See code/import numpy as np
+import matplotlib.pyplot as plt
+
+# Example data (replace with your actual data)
+weights_strategy1 = [0.15, 0.25, 0.10, 0.20, 0.30]  # e.g., "Min Cost" allocation
+weights_strategy2 = [0.30, 0.20, 0.15, 0.25, 0.10]  # e.g., "Max Efficiency"
+weights_strategy3 = [0.20, 0.20, 0.20, 0.20, 0.20]  # e.g., "Balanced"
+categories = ['Group A', 'Group B', 'Group C', 'Group D', 'Group E']
+n_categories = len(categories)
+
+# Convert weights to percentages
+strategy1 = 100 * np.array(weights_strategy1)
+strategy2 = 100 * np.array(weights_strategy2)
+strategy3 = 100 * np.array(weights_strategy3)
+
+# Create the bar chart
+X = np.arange(start=1, stop=n_categories + 1, step=1)
+width = 0.25  # Width of each bar
+
+plt.figure(figsize=(12, 6))
+
+# Plot each strategy
+plt.bar(X - width, strategy1, width=width, color='teal', label='Min Cost')
+plt.bar(X, strategy2, width=width, color='darkorange', label='Max Efficiency')
+plt.bar(X + width, strategy3, width=width, color='blue', label='Balanced')
+
+# Add labels and title
+plt.title('Resource Allocation Strategies Comparison')
+plt.xlabel('Categories')
+plt.ylabel('Allocation (%)')
+plt.xticks(X, categories)
+plt.legend()
+plt.tight_layout()
+
+# Save and display
+plt.savefig("figures/allocation_comparison.png")
+plt.show().py
 ```
 
 ### 3. Max Drawdown Analysis
