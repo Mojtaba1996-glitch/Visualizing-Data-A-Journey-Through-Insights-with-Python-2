@@ -5,8 +5,12 @@
 Download the PDF here: [Visualizing Data Guide](docs/docs/docs/Visualizing.pdf)
 
 ## 🗂️ Code Examples
-### 1.Normalized Stock Prices for Comparison
-![Line chart comparion](figures/newplot.png)
+### 1. **Normalized Trends Over Time**  
+![Normalized Trends](figures/newplot.png)
+**When to use**: Compare trends of multiple variables (e.g., temperature, sales, user activity) by normalizing their starting values to 1.0.  
+**Example**:  
+- Track relative growth of product sales across regions.  
+- Compare temperature fluctuations in different cities.  
 ```python
 # import pandas pd
 import plotly.graph_objects as go
