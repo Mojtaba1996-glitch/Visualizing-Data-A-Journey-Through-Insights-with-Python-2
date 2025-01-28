@@ -112,10 +112,41 @@ plt.savefig("figures/allocation_comparison.png")
 plt.show().py
 ```
 
-### 3. Max Drawdown Analysis
-![Drawdown Plots](figures/max_drawdown.png)
+## 🗂️ Max Drawdown Analysis
+![Resource Allocation](figures/download.png)
+
+**When to use**: When to use: Analyze the maximum drawdown, which is the peak-to-trough decline during a specific recorded period of an investment, fund, or commodity. It is usually quoted as the percentage between the peak and the trough.
+
+**Examples**:
+- **Finance**: Assess the risk of investment portfolios. 
+- **Engineering**: Evaluate the performance of systems under stress.
+- **Healthcare**: Monitor patient health metrics over time. 
 ```python
-# See code/drawdown_plots.py
+# See code/drawdimport matplotlib.pyplot as plt
+import pandas as pd
+
+# Example data (replace with your actual data)
+# wealth_index = pd.DataFrame(...)
+# previous_peaks = pd.DataFrame(...)
+
+# Define the columns to plot
+columns = ['ADVANC', 'BH', 'EGCO', 'GULF', 'INTUCH', 'PTTEP', 'PTTGC', 'TOP', 'TU']
+
+# Create subplots
+fig, ax = plt.subplots(figsize=(12, 12), nrows=5, ncols=2)
+ax = ax.flatten()
+
+# Loop through the columns and plot each one
+for i, col in enumerate(columns):
+    wealth_index[col].plot(grid=True, ax=ax[i], legend=True, label="Wealth Index")
+    previous_peaks[col].plot(grid=True, ax=ax[i], legend=True, label="Max Peaks")
+
+# Save the chart
+plt.tight_layout()
+plt.savefig("figures/max_drawdown.png")
+
+# Display the chart
+plt.show()own_plots.py
 ```
 
 ### 4. Returns Scatter Plot
